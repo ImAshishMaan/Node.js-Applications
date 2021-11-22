@@ -6,7 +6,7 @@ const { argv } = require('yargs')
 // Customize yargs version
 yargs.version('1.1.0')
 
-// create add comand
+// create add comand 
 yargs.command({
     command: 'add',
     describe: 'Add a new note',
@@ -22,7 +22,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: function(argv){
+    handler(){
         notes.addNote(argv.title, argv.body)
     }
 })
@@ -38,7 +38,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: function(argv){
+    handler(){
         notes.removeNote(argv.title)
     }
 })
@@ -47,7 +47,7 @@ yargs.command({
 yargs.command({
     command:'read',
     describe:'read the note',
-    handler: function(){
+    handler(){
         console.log("reading the new note")
     }
 })
@@ -56,8 +56,8 @@ yargs.command({
 yargs.command({
     command: 'list',
     describe: 'list of all notes',
-    handler: function(){
-        console.log("list of all the notes present")
+    handler(){
+        notes.listNotes()
     }
 })
 yargs.parse()
